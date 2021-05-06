@@ -1,0 +1,44 @@
+{% extends 'list_app/index.html' %}
+{% load static %}
+
+
+{% block content %}  
+    <header>
+      <!-- Add the href attribute -->
+      <a class="header-logo" href="{% url 'top' %}" >LIST</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>Todo List</h1>
+      </div>
+
+      <form method='POST' class="form-inline">
+        {% csrf_token %}
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Password</label>
+          <input type="text" class="form-control" id="inputtext" placeholder="" name='item'>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Add Items</button>
+      </form>
+
+      <div class="index-table-wrapper">
+        <div class="table-head">
+          <span class="id-column" style="width: 200px;">ID</span>
+          <span class="name-column" style="width: 200px;">Item</span>
+          <span class="id-column" style="width: 200px;">Check/Uncheck</span>
+          <span class="id-column" style="width: 700px;">Edit/Delete</span>
+        </div>
+        
+        <ul class="table-body">
+          {% for list in list_items %} 
+            <li>
+              <span class="id-column" style="width: 200px;">{{list.id}}</span>
+              <span class="name-column" style="width: 200px;">{{list.items}}</span>
+              <span class="id-column" style="width: 200px;"><form><input type="checkbox"></form></span>
+              <span class="id-column" style="width: 700px;"><a href="{% url 'delete' list.id %}" type="button" class="btn btn-danger">Delete</a></span>
+            </li>
+          {% endfor %} 
+        </ul>
+      </div>
+    </div>
+{% endblock %} 

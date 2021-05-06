@@ -1,0 +1,25 @@
+{% extends 'list_app/index.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="top-wrapper">
+      <div class="top-detail">
+        
+        <h2 class="subtitle">A Shopping List App</h2>
+        <h1 class="title">LIST</h1>
+        <p class="description">
+          LIST lets you create and manage your shopping list easily.
+          <br>
+          Add items you want anytime, anywhere.
+        </p>
+        <!-- Add the href attribute -->
+        <a class="index-button" href="{% url 'list_view' %}" >View your list</a>
+        <br>
+      </div>
+      <div class="top-image">
+        <img src="{% static 'list_app_static/images/banner.png' %}">
+      </div>
+    </div>
+{% endblock %} 
